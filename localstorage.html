@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>localstorage</title>
-    
+    <script>
+        function saveObj(){
+           var a = { 
+                name:"Zeel",
+                gender: "Male",
+                age: 20,
+                city: "Surat",
+                mobile: 1234567890 
+            }
+            var mydata = JSON.stringify(a);
+            localStorage.setItem("usera", mydata);
+        }
+        function saveData(){
+            localStorage.setItem("name", "Zeel");
+            localStorage.setItem("age", "20");
+            document.getElementById("ans").innerHTML = "Data saved successfully!";
+        }
+        function getData(){
+            var a = localStorage.getItem("name");
+            console.log("name is: " + a);
+            document.getElementById("ans").innerHTML = "Name is: " + a;
+        }
+        function getObjData() {
+            var a = localStorage.getItem("usera");
+            var mydata = JSON.parse(a);
+            document.getElementById("ans").innerHTML = "Name is: " + mydata.name + " gender is " + mydata.gender
+        }
+        function removeData() {
+            localStorage.removeItem("name");
+            localStorage.removeItem("age");
+            document.getElementById("ans").innerHTML = "Data removed successfully!";
+        }
+        function removeAll() {
+            localStorage.clear();
+            document.getElementById("ans").innerHTML = "All data removed successfully!";
+        }
+        
+    </script>
 </head>
 <body>
-    
+    <p id="ans"></p>
+    <input type="button" value="Save" onclick="saveData()">
+    <input type="button" value="Sav obje" onclick="saveObj()">
+    <input type="button" value="Get" onclick="getData()">
+    <input type="button" value="GetObj" onclick="getObjData()">
+    <input type="button" value="Remove" onclick="removeData()">
+    <input type="button" value="remove All" onclick="removeAll()">
+
 </body>
 </html>
